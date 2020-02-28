@@ -1,8 +1,0 @@
-prefix=/home/husarion/final_project/install
-
-Name: EKF
-Description: Description of EKF
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/husarion/final_project/install/lib 
-Requires: 
