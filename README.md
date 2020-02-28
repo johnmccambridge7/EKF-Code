@@ -12,6 +12,6 @@ This project is split among 6 files in the EKF `src` folder. The primary code dr
 This program is currently set up to simply be executed by running the `RobotController.py` file. Note that this file should be executed before attempting to begin publishing messages intended for the EKF (i.e. if planning to perform the test on a bag file, the node for `RobotController.py` should be initialized before trying to run the bag file). No additional commands or input needed, but messages must be being published when the program is run. 
 
 ## Authors:
+Rylee Stone
 Janvi Kalra
 John McCambridge
-Rylee Stone
