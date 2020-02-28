@@ -1,3 +1,6 @@
 [submodule "ar_tag_toolbox"]
 	path = ar_tag_toolbox
 	url = https://github.com/atomoclast/ar_tag_toolbox
+[submodule "src/ar_tag_toolbox"]
+	path = src/ar_tag_toolbox
+	url = https://github.com/atomoclast/ar_tag_toolbox
