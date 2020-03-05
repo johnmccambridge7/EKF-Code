@@ -2,6 +2,9 @@
 ### Winter 2020
 ###  Janvi Kalra, John McCambridge, Rylee Stone
 
+### Presentation Link: 
+https://docs.google.com/presentation/d/15aFIeHDtL1zJQzyHb2ORZ6yITm9i3Vodm1ZfrIVSvCE/edit?usp=sharing
+
 ## Description:
 This project is split among 6 files in the EKF `src` folder. The primary code driver is `RobotController.py` which implements methods from most of the other included files. `GUI.py` is used to drive a robot for data to store in a bag file for analysis. Similarly, `robo_path.py`   is a script used for data collection and drives the bot over a pre-determined path. 
 
