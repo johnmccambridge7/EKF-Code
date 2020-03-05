@@ -1,0 +1,2 @@
+EKF:ar_tag_toolbox:laser_line_extraction:multiple-object-tracking-lidar
+-DCATKIN_DEVEL_PREFIX=/home/husarion/final_project/devel -DCMAKE_INSTALL_PREFIX=/home/husarion/final_project/install -G Unix Makefiles
