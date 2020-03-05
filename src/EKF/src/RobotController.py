@@ -10,9 +10,11 @@ import laser_geometry.laser_geometry as lg
 from Kalman import Kalman
 from geometry_msgs.msg import Twist, PoseStamped, PoseWithCovarianceStamped
 import math
+import matplotlib.pyplot as plt
 
 START_X = 2.25 # Ground truth of robot initial pose, x-coordinate.
 START_Y = 0.0  # Ground truth of robot initial pose, y-coordinate.
+FIGURE = "pose.png" # File name of pose graph.
 
 class Robot:
 	def __init__(self):
@@ -86,10 +88,35 @@ class Robot:
 		if self.d1 != None and self.d2 != None:
 			 	self.filter.update(self.pose_x, self.pose_y, self.d1, self.d2, self.angular_displacement)
 
+	def plot(self):
+		estimated_poses_x = [] # As gathered by the Kalman Filter. 
+		estimated_poses_y = []
+		poses_x = [] # As gathered by the wheel odometry.
+		poses_y = []
+		for matrix in self.filter.final_predictions:
+			estimated_poses_x.append(matrix[0][0])
+			estimated_poses_y.append(matrix[1][0])
+		for poses in self.filter.real_poses:
+			poses_x.append(poses[0])
+			poses_y.append(poses[1])
+		x_axis = range(len(poses_x))
+		plt.plot(x_axis, estimated_poses_x, label="kalman estimated x-coordinate")
+		plt.plot(x_axis, estimated_poses_y, label="kalman estimated y-coordinate")
+		plt.plot(x_axis, poses_x, label="odom x-coordinate")
+		plt.plot(x_axis, poses_y, label="odom y-coordinate")
+		plt.title('Robot X, Y Pose')
+		plt.xlabel('Arbitrary Unit of Time')
+		plt.ylabel('Pose in Meters')
+		plt.savefig(FIGURE)
+		plt.legend(loc='center left')
+		plt.show()
+
 	def start(self):
 		while not rospy.is_shutdown():
-			print(self.filter.x_t)
+			print("Estimated Pose: (" + str(self.filter.x_t[0][0]) + "," + str(self.filter.x_t[1][0]) + ")")
 			pass
+		# Plot data.
+		self.plot()
 
 if __name__ == '__main__':
 	rospy.init_node('CONTROLLER')
